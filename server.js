@@ -76,7 +76,10 @@ function getPostsByUserId(userId) {
 //Get the user
 const user = getUserById(userId);
 console.log('===== this is the user =====')
-console.log(user);
+console.log(userPromise);
+userPromise.then(theUser => {
+    console.log(theUser);
+})
 }
 
 
@@ -89,15 +92,36 @@ function getPostsByUserId(userId) {
         ;
     `, userId)
     .then(posts => {
+        const userPromise = getUserById(userId);
+        console.log(userPromise);
+        userPromise.then(theUser => {
+        // console.log(theUser);
         posts.forEach(post => {
             console.log(`${post.id}: ${post.url}`);
         })
     })
+})
     .catch(e => {
         console.log(e);
     })
+    //and return it all together
 }
-getPostsByUserId(2)
+// getPostsByUserId(2)
+
+//getAllComments
+//getAllCommentsByUserId
+
+//getAllCommentsWithUser
+//getPostsWithLikes
+
+
+
+
+
+
+
+
+
 
 //CREATE
 //UPDATE
