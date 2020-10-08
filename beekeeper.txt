@@ -1,0 +1,23 @@
+-- SELECT posts.id, url, name FROM posts
+-- 	INNER JOIN users
+--    		ON posts.user_id = users.id;
+
+-- SELECT posts.id,url,tag FROM posts
+-- 	LEFT JOIN tags_posts
+--     	ON posts.id = tags_posts.post_id
+--     LEFT JOIN tags
+--     	ON tags.id = tags_posts.tag_id;
+    	
+-- SELECT count(user_id) FROM likes
+-- 	WHERE post_id = 2;
+
+-- SELECT count(user_id) as num, post_id FROM likes
+-- 	GROUP BY post_id
+--     ORDER BY post_id;
+
+-- UPDATE comments	
+-- 	SET comment = 'Pancakes'
+--     WHERE comments.id = 6;
+
+-- DELETE FROM posts
+-- 	WHERE id = 4;
