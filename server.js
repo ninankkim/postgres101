@@ -1,3 +1,4 @@
+//You're always going to want to have this here when you're running this type of code:
 const config = {
     host: 'localhost',
     port: 5432,
@@ -7,6 +8,7 @@ const config = {
 const pgp = require('pg-promise')();
 const db = pgp(config);
 
+//TEMPLATE:
 // db.query(`
 //     select * from users;
 // `)
@@ -24,6 +26,8 @@ const db = pgp(config);
 //OK to leave this out for an express app.
 //We want this for our command-line app.
 // pgp.end();
+
+//----------------------------------READ------------------------------------//
 
 //READ
 //Get all users
@@ -55,8 +59,10 @@ function getUserById(userId) {
 }
 // getAllUsers()
 
+//----------------------------------POSTS------------------------------------//
+
 //Get all posts
-function getAllPosts () {
+function getAllPosts() {
     db.many(`
         select * from posts;
     `)
@@ -73,19 +79,8 @@ function getAllPosts () {
 
 //Get all posts by a specific user
 function getPostsByUserId(userId) {
-//Get the user
-const user = getUserById(userId);
-console.log('===== this is the user =====')
-console.log(userPromise);
-userPromise.then(theUser => {
-    console.log(theUser);
-})
-}
-
-
-
-
-function getPostsByUserId(userId) {
+//1. Get the user
+//2. Get their posts
     db.many(`
         select * from posts
             where user_id = $1
@@ -106,7 +101,7 @@ function getPostsByUserId(userId) {
     })
     //and return it all together
 }
-// getPostsByUserId(2)
+
 
 //getAllComments
 //getAllCommentsByUserId
@@ -114,15 +109,9 @@ function getPostsByUserId(userId) {
 //getAllCommentsWithUser
 //getPostsWithLikes
 
-
-
-
-
-
-
-
-
-
 //CREATE
 //UPDATE
 //DELETE
+
+//getPostsByUserId(2)
+//pgp.end();
